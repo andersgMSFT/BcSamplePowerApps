@@ -4,6 +4,12 @@
     OnVisible: |-
         =Clear(colTablesWithStatus);
         Clear(colCachedSalesOrdersForTables);
+        Clear(colSelectedItems);
+        Clear(colOrderSummary);
+        
+        Set(varSelectedItemGroup, Blank());
+        Set(varAddItemsToCurrentOrder, Blank());
+        Set(varActiveorderForSelectedTable, Blank());
         
         // Ensure sales orders inlcude latest changes
         Refresh('salesOrders (v2.0)');
@@ -60,29 +66,21 @@
             Layout: =Layout.Vertical
             LayoutMinHeight: =287
             LayoutMinWidth: =320
-            OnSelect: |
+            OnSelect: |+
                 =Clear(colSelectedItems);
                 Set(varSelectedTable, ThisItem);
                 
                 If(varSelectedTable.free,
-                    Set(varActiveorderForSelectedTable, Blank()),
-                    Set(varActiveorderForSelectedTable, LookUp('salesOrders (v2.0)',number = varSelectedTable.orderNumber))
+                    Set(varActiveorderForSelectedTable, Blank());
+                    Navigate('Select Items Screen', ScreenTransition.Cover);
+                    ,
+                    Set(varActiveorderForSelectedTable, LookUp('salesOrders (v2.0)',number = varSelectedTable.orderNumber));
+                    Navigate('Order Summary Screen', ScreenTransition.Cover);    
                 );
                 
-                If(
-                    IsBlank(varActiveorderForSelectedTable),
-                    Navigate(
-                        'Select Items Screen',
-                        ScreenTransition.Cover
-                    ),
-                    Navigate(
-                        'Load Order screen',
-                        ScreenTransition.Cover
-                    );
-                    
-                );
             TemplatePadding: =0
             TemplateSize: =120
+            Transition: =Transition.Pop
             Y: =
             ZIndex: =3
 
