@@ -8,7 +8,7 @@ App As appinfo:
             secondaryColor: ColorValue("#E2F8FF")
         });
         
-        // Set device contants
+        // Set device constants
         Set(varIsBrowser, IsBlank(Acceleration.X));
         
         

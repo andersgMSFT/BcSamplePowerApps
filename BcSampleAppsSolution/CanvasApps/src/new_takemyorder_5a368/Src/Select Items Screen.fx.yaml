@@ -2,8 +2,12 @@
     LoadingSpinnerColor: =RGBA(100, 118, 132, 1)
     OnVisible: |-
         =UpdateContext({ctxItemShowingQuantityControl: Blank()});
-        
         ClearCollect(colAvailableItems, Filter('itemsWithImage (microsoft/powerApps/beta)', 'Sold In Restaurant'));
+        
+        // Select first entry - unless a value is already selected
+        If(IsBlank(varSelectedItemGroup), 
+            Select(galItemGroups, 1);
+        );
 
     conButtom As groupContainer.manualLayoutContainer:
         Height: =110
@@ -234,6 +238,7 @@
                         Patch(
                             colSelectedItems,
                             {id: ThisItem.id},
+                            // Consider getting the value via look up in the list
                             {quantity: Value(btnQCQuantity.Text) + 1}
                         )
                     );
@@ -448,7 +453,7 @@
         HoverFill: =ColorFade(RGBA(100, 118, 132, 1), -20%)
         OnSelect: |-
             =UpdateContext({ctxItemShowingQuantityControl: Blank()});
-            Navigate('Current Order Screen', ScreenTransition.Cover);
+            Navigate('Order Summary Screen', ScreenTransition.Cover);
         RadiusBottomLeft: =30
         RadiusBottomRight: =30
         RadiusTopLeft: =30
@@ -473,7 +478,7 @@
         HoverFill: =ColorFade(RGBA(100, 118, 132, 1), -20%)
         OnSelect: |-
             =UpdateContext({ctxItemShowingQuantityControl: Blank()});
-            Navigate('Current Order Screen', ScreenTransition.Cover);
+            Navigate('Order Summary Screen', ScreenTransition.Cover);
         RadiusBottomLeft: =30
         RadiusBottomRight: =30
         RadiusTopLeft: =30
@@ -502,6 +507,7 @@
                     Set(varSelectedItemGroup, ThisItem.Value)
                 )
             TemplateSize: =(Parent.Width / 4) - 10
+            Transition: =Transition.Pop
             Width: =Parent.Width
             Y: =Parent.Height - Self.Height
             ZIndex: =1
@@ -568,7 +574,7 @@
                 
                 If(varAddItemsToCurrentOrder, 
                     Set(varAddItemsToCurrentOrder, false);
-                    Navigate('Load Order screen', ScreenTransition.UnCover)
+                    Navigate('Order Summary Screen', ScreenTransition.UnCover)
                     , 
                     Navigate('Select table screen', ScreenTransition.UnCoverRight)
                 )

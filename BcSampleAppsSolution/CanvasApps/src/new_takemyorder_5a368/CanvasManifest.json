@@ -122,9 +122,8 @@
     "Info screen",
     "Select table screen",
     "Select Items Screen",
-    "Load Order screen",
-    "Current Order Screen",
-    "Order submitted screen",
+    "Order Summary Screen",
+    "Action Success Screen",
     "Item Details Screen",
     "Debug screen",
     "TODO"
