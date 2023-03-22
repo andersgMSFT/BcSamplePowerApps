@@ -83,12 +83,19 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "SampleImage",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "Image",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "ImagePosition",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "ImagePosition",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "ImageRotation",
         {
           "AFDDataSourceName": "",
@@ -106,8 +113,22 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "Width",
-        "Height",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Fill",
         "DisabledFill",
         "PressedFill",
