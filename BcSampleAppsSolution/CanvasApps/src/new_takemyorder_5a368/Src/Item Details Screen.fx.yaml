@@ -91,7 +91,7 @@
                 Color: =varTheme.primaryColor
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(244, 244, 244, 1)
-                Height: =varTheme.iconSizeSmall
+                Height: =40
                 Icon: =Icon.Add
                 OnSelect: |-
                     =// Clear quantity control if it is showing
@@ -128,7 +128,7 @@
                     );
                 TabIndex: =0
                 Tooltip: ="View item details"
-                Width: =varTheme.iconSizeSmall
+                Width: =40
                 X: =Parent.Width - (icnAddItem_2.Width/2) - 50
                 Y: =Parent.Height/2 - Self.Height/2
                 ZIndex: =3
@@ -139,7 +139,7 @@
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 Fill: =varTheme.primaryColor
                 FontWeight: =FontWeight.Semibold
-                Height: =varTheme.iconSizeBig
+                Height: =60
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =varTheme.primaryColor
                 OnSelect: |-
@@ -157,7 +157,7 @@
                         Not(IsBlank(btnQuantity_1.Text))
                     )
                         
-                Width: =varTheme.iconSizeBig
+                Width: =60
                 X: =Parent.Width - (btnQuantity_1.Width/2) - 50
                 Y: =Parent.Height/2 - Self.Height/2
                 ZIndex: =4

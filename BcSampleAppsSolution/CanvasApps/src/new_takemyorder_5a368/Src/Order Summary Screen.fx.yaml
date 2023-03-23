@@ -126,7 +126,7 @@
                 PaddingRight: =0
                 PaddingTop: =0
                 Size: =18
-                Text: =Text(ThisItem.price, varCurrencyFormat)
+                Text: =Text(ThisItem.price, varCurrencyFormat, varBcLocale)
                 VerticalAlign: =VerticalAlign.Top
                 Visible: =Not(IsBlank(ThisItem.quantity))
                 Width: =296
@@ -418,7 +418,7 @@
                 OnSelect: =
                 Size: =25
                 Text: |
-                    =Text(Sum(Filter(colSelectedItems, group = ThisItem.name), price * quantity), varCurrencyFormat)
+                    =Text(Sum(Filter(colSelectedItems, group = ThisItem.name), price * quantity), varCurrencyFormat, varBcLocale)
                 Visible: =Not(IsBlank(LookUp(colCurrentOrderState_CollapsedGroups, name = ThisItem.name)))
                 Width: =200
                 X: =Parent.Width - Self.Width - 20
@@ -511,7 +511,7 @@
                 PaddingRight: =0
                 PaddingTop: =0
                 Size: =30
-                Text: =Text(Sum(colSelectedItems, price * quantity), varCurrencyFormat)
+                Text: =Text(Sum(colSelectedItems, price * quantity), varCurrencyFormat ,varBcLocale)
                 VerticalAlign: =VerticalAlign.Top
                 Visible: =ThisItem.total
                 Width: =200

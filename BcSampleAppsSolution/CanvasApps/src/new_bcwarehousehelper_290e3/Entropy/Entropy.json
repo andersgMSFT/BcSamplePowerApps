@@ -108,12 +108,10 @@
   "DoesTestStepsMetadataExist": true,
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "03/23/2023 13:16:24",
+  "HeaderLastSavedDateTimeUTC": "03/23/2023 14:54:31",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "870dfb89-5a04-4c28-9b03-98ba7bf445bb": "\"/providers/microsoft.powerapps/apis/shared_logicflows/connections/7bb38b8c2eac5e1dcf06964dfa46ae5a-5e1f21561f5613c9\"",
-    "d12d2ff4-7368-496c-b006-e50fd64afc64": "\"/providers/microsoft.powerapps/apis/shared_office365users/connections/4a92ed3cf19b4e738aea67aefa7e72a9\"",
-    "edc50207-c5a7-44a8-a0b7-7120a20a896d": "\"/providers/microsoft.powerapps/apis/shared_office365users/connections/4a92ed3cf19b4e738aea67aefa7e72a9\"",
     "fc5cc552-9879-4472-be2f-2efce8c414bd": "\"/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas/connections/shared-dynamicssmbsa-18332827-61e5-4e26-8a3b-6bb09e15d956\""
   },
   "LocalDatabaseReferencesAsEmpty": false,
@@ -143,17 +141,15 @@
     "ef758bf817284650be105716effde2cb": 1
   },
   "OrderDataSource": {
-    "colStoredAppState": 10,
-    "ComboBoxSample": 6,
-    "companyInformation (v2.0)": 7,
-    "CustomGallerySample": 5,
-    "DropDownSample": 3,
-    "items (v2.0)": 9,
-    "itemsWithImage (microsoft/powerApps/beta)": 8,
-    "locations (v2.0)": 4,
-    "Office365-brugere": 0,
-    "Office365Users": 1,
-    "PostBCSalesOrder": 2
+    "colStoredAppState": 8,
+    "ComboBoxSample": 4,
+    "CustomGallerySample": 3,
+    "DropDownSample": 1,
+    "items (v2.0)": 7,
+    "itemsWithImage (microsoft/powerApps/beta)": 6,
+    "localizationInformations (microsoft/powerApps/beta)": 5,
+    "locations (v2.0)": 2,
+    "PostBCSalesOrder": 0
   },
   "OrderGroupControls": {},
   "OrderPcfTemplate": {},

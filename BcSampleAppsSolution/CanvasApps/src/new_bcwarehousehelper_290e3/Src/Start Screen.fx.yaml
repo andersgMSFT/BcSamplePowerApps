@@ -40,7 +40,7 @@
                 Font: =varTheme.font
                 Height: =53
                 Size: =21
-                Text: ='Office365-brugere'.MyProfileV2().displayName
+                Text: =User().FullName
                 Width: =560
                 X: =Parent.Width/2 - Self.Width/2
                 Y: =lblUserName.Height

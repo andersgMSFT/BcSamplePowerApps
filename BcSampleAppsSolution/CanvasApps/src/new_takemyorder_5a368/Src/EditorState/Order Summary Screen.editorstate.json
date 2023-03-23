@@ -470,7 +470,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnAddToCurrentOrder",
-      "ParentIndex": 1,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4431,7 +4431,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnSubmitCurrentOrder",
-      "ParentIndex": 2,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5025,7 +5025,7 @@
       },
       "MetaDataIDKey": "",
       "Name": "comBigDividerBottomSummary",
-      "ParentIndex": 0,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5116,7 +5116,7 @@
       },
       "MetaDataIDKey": "",
       "Name": "comLoadingCurrentOrderOverlay",
-      "ParentIndex": 7,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5223,7 +5223,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "conActiveOrderButtons",
-      "ParentIndex": 3,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5384,7 +5384,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "conCheckOutDialog",
-      "ParentIndex": 5,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5555,7 +5555,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "conDeleteDraftOrderDialog",
-      "ParentIndex": 6,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6030,7 +6030,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "conTop_currentOrder",
-      "ParentIndex": 4,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6504,7 +6504,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "galCurrentOrder",
-      "ParentIndex": 8,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
