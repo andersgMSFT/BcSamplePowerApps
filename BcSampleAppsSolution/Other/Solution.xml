@@ -83,6 +83,7 @@
       <RootComponent type="29" id="{8b94a6d9-a3c1-ed11-83ff-000d3a991110}" behavior="0" />
       <RootComponent type="300" schemaName="new_bcwarehousehelper_290e3" behavior="0" />
       <RootComponent type="300" schemaName="new_takemyorder_5a368" behavior="0" />
+      <RootComponent type="300" schemaName="new_testtablet_92469" behavior="0" />
     </RootComponents>
     <MissingDependencies />
   </SolutionManifest>

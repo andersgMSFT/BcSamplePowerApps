@@ -1,0 +1,14 @@
+Screen1 As screen:
+
+    Label1 As label:
+        Text: ="Just a test app"
+        X: =264
+        Y: =399
+        ZIndex: =1
+
+    Label2 As label:
+        Text: =App.Width
+        X: =220
+        Y: =745
+        ZIndex: =2
+
