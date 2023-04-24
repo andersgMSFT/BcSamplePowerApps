@@ -9,6 +9,24 @@ codeunit 51002 BCS_TO_LabelManagement
     end;
 
     var
+        GallerySelect: Label 'TakeOrderScreen_GallerySelect', Locked = true;
+        GallerySelect_ValueTxt: Label 'Click to select';
+
+        LoadingMessage: Label 'LoadingMessage', Locked = true;
+        LoadingMessage_ValueTxt: Label 'Loading data...';
+
+        Subtract: Label 'Subtract', Locked = true;
+        SubTract_ValueTxt: Label 'Substract one from the quantity';
+
+        AddText: Label 'AddText', Locked = true;
+        AddText_ValueTxt: Label 'Add one to the quantity';
+
+        DismissQuantityControl: Label 'DismissQuantityControl', Locked = true;
+        DismissQuantityControl_ValueTxt: Label 'Dismiss the quantity control';
+
+        FirstAdd: Label 'FirstAdd', Locked = true;
+        FirstAdd_ValueTxt: Label 'Add to selection';
+
         StartScreen_TakeOrder: Label 'StartScreen_TakeOrder', Locked = true;
         StartScreen_TakeOrder_ValueTxt: Label 'Take Order';
 
@@ -44,6 +62,9 @@ codeunit 51002 BCS_TO_LabelManagement
         SelectTableScreen_Update: Label 'SelectTableScreen_Update', Locked = true;
         SelectTableScreen_Update_ValueTxt: Label 'Refresh the list';
 
+        SelectTableScreen_GalleryToolTip: Label 'SelectTableScreen_GalleryToolTip', Locked = true;
+        SelectTableScreen_GalleryToolTip_ValueTxt: Label 'Gallery with available tables';
+
         TakeOrderScreen_FullMenu: Label 'TakeOrderScreen_FullMenu', Locked = true;
         TakeOrderScreen_FullMenu_ValueTxt: Label 'Full menu';
 
@@ -61,6 +82,12 @@ codeunit 51002 BCS_TO_LabelManagement
 
         TakeOrderScreen_Delete: Label 'TakeOrderScreen_Delete', Locked = true;
         TakeOrderScreen_Delete_ValueTxt: Label 'Delete the selection';
+
+        TakeOrderScreen_FilterGallery: Label 'TakeOrderScreen_FilterGallery', Locked = true;
+        TakeOrderScreen_FilterGallery_ValueTxt: Label 'A gallery with the available item filters';
+
+        TakeOrderScreen_ItemGallery: Label 'TakeOrderScreen_ItemGallery', Locked = true;
+        TakeOrderScreen_ItemGallery_ValueTxt: Label 'A gallery with the available items';
 
         SummaryScreen_Delete: Label 'SummaryScreen_Delete', Locked = true;
         SummaryScreen_Delete_ValueTxt: Label 'Delete the order';
@@ -85,12 +112,6 @@ codeunit 51002 BCS_TO_LabelManagement
 
         SummaryScreen_CheckOutMessage: Label 'SummaryScreen_CheckOutMessage', Locked = true;
         SummaryScreen_CheckOutMessage_ValueTxt: Label 'Are you sure you want to check out and close the order?';
-
-        Subtract: Label 'Subtract', Locked = true;
-        SubTract_ValueTxt: Label 'Substract one from the quantity';
-
-        AddText: Label 'AddText', Locked = true;
-        AddText_ValueTxt: Label 'Add one to the quantity';
 
 
         // Telemetry labels
@@ -124,8 +145,13 @@ codeunit 51002 BCS_TO_LabelManagement
 
     procedure GetReportLabels(var TempPowerAppsLabels: Record BCS_Labels temporary)
     begin
-        // Fills the given temp table with all the default key-value pairs hardcoded into this codeunit.
-        // Key text should always be locked, and Value text should always be translated.
+
+        InsertLabel(TempPowerAppsLabels, LoadingMessage, LoadingMessage_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, Subtract, SubTract_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, AddText, AddText_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, FirstAdd, FirstAdd_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, GallerySelect, GallerySelect_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, DismissQuantityControl, DismissQuantityControl_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, StartScreen_TakeOrder, StartScreen_TakeOrder_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, StartScreen_User, StartScreen_User_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, StartScreen_InfoScreen, StartScreen_InfoScreen_ValueTxt, 'en-US');
@@ -138,12 +164,15 @@ codeunit 51002 BCS_TO_LabelManagement
         InsertLabel(TempPowerAppsLabels, SelectTableScreen_Free, SelectTableScreen_Free_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SelectTableScreen_Occupied, SelectTableScreen_Occupied_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SelectTableScreen_Update, SelectTableScreen_Update_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, SelectTableScreen_GalleryToolTip, SelectTableScreen_GalleryToolTip_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, TakeOrderScreen_FullMenu, TakeOrderScreen_FullMenu_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, TakeOrderScreen_Items, TakeOrderScreen_Items_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, TakeOrderScreen_Totals, TakeOrderScreen_Totals_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, TakeOrderScreen_Review, TakeOrderScreen_Review_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, TakeOrderScreen_Close, TakeOrderScreen_Close_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, TakeOrderScreen_Delete, TakeOrderScreen_Delete_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, TakeOrderScreen_FilterGallery, TakeOrderScreen_FilterGallery_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, TakeOrderScreen_ItemGallery, TakeOrderScreen_ItemGallery_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SummaryScreen_Delete, SummaryScreen_Delete_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SummaryScreen_Back, SummaryScreen_Back_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SummaryScreen_Submit, SummaryScreen_Submit_ValueTxt, 'en-US');
@@ -152,8 +181,6 @@ codeunit 51002 BCS_TO_LabelManagement
         InsertLabel(TempPowerAppsLabels, SummaryScreen_Total, SummaryScreen_Total_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SummaryScreen_DeleteMessage, SummaryScreen_DeleteMessage_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SummaryScreen_CheckOutMessage, SummaryScreen_CheckOutMessage_ValueTxt, 'en-US');
-        InsertLabel(TempPowerAppsLabels, Subtract, SubTract_ValueTxt, 'en-US');
-        InsertLabel(TempPowerAppsLabels, AddText, AddText_ValueTxt, 'en-US');
 
     end;
 
