@@ -9,7 +9,7 @@ codeunit 51002 BCS_TO_LabelManagement
     end;
 
     var
-        GallerySelect: Label 'TakeOrderScreen_GallerySelect', Locked = true;
+        GallerySelect: Label 'GallerySelect', Locked = true;
         GallerySelect_ValueTxt: Label 'Click to select';
 
         LoadingMessage: Label 'LoadingMessage', Locked = true;
@@ -26,6 +26,9 @@ codeunit 51002 BCS_TO_LabelManagement
 
         FirstAdd: Label 'FirstAdd', Locked = true;
         FirstAdd_ValueTxt: Label 'Add to selection';
+
+        ItemImageText: Label 'ItemImageText', Locked = true;
+        ItemImageText_ValueTxt: Label 'Image of item: ';
 
         StartScreen_TakeOrder: Label 'StartScreen_TakeOrder', Locked = true;
         StartScreen_TakeOrder_ValueTxt: Label 'Take Order';
@@ -50,6 +53,10 @@ codeunit 51002 BCS_TO_LabelManagement
 
         InfoScreen_Link: Label 'InfoScreen_Link', Locked = true;
         InfoScreen_Link_ValueTxt: Label 'Sample apps';
+
+        InfoScreen_LinkToolTip: Label 'InfoScreen_LinkToolTip', Locked = true;
+        InfoScreen_LinkToolTip_ValueTxt: Label 'Click to open the sample app documentation page';
+
         SelectTableScreen_Title: Label 'SelectTableScreen_Title', Locked = true;
         SelectTableScreen_Title_ValueTxt: Label 'Select table';
 
@@ -113,6 +120,15 @@ codeunit 51002 BCS_TO_LabelManagement
         SummaryScreen_CheckOutMessage: Label 'SummaryScreen_CheckOutMessage', Locked = true;
         SummaryScreen_CheckOutMessage_ValueTxt: Label 'Are you sure you want to check out and close the order?';
 
+        SummaryScreen_Gallery: Label 'SummaryScreen_Gallery', Locked = true;
+        SummaryScreen_Gallery_ValueTxt: Label 'A gallery with the ordered items';
+
+        SummaryScreen_SummaryStateExpanded: Label 'SummaryScreen_SummaryStateExpanded', Locked = true;
+        SummaryScreen_SummaryStateExpanded_ValueTxt: Label 'Group summary expanded.';
+
+        SummaryScreen_SummaryStateCollapsed: Label 'SummaryScreen_SummaryStateCollapsed', Locked = true;
+        SummaryScreen_SummaryStateCollapsed_ValueTxt: Label 'Group summar collapsed.';
+
 
         // Telemetry labels
         LabelsGeneratedTelemetryTxt: Label 'Retrieving Power Apps labels for language "%1" (system language is "%2").', Locked = true;
@@ -152,6 +168,7 @@ codeunit 51002 BCS_TO_LabelManagement
         InsertLabel(TempPowerAppsLabels, FirstAdd, FirstAdd_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, GallerySelect, GallerySelect_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, DismissQuantityControl, DismissQuantityControl_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, ItemImageText, ItemImageText_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, StartScreen_TakeOrder, StartScreen_TakeOrder_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, StartScreen_User, StartScreen_User_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, StartScreen_InfoScreen, StartScreen_InfoScreen_ValueTxt, 'en-US');
@@ -159,7 +176,8 @@ codeunit 51002 BCS_TO_LabelManagement
         InsertLabel(TempPowerAppsLabels, InfoScreen_Text, InfoScreen_Text_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, InfoScreen_ReadMore, InfoScreen_ReadMore_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, InfoScreen_Link, InfoScreen_Link_ValueTxt, 'en-US');
-        insertLabel(TempPowerAppsLabels, InfoScreen_Close, InfoScreen_Close_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, InfoScreen_Close, InfoScreen_Close_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, InfoScreen_LinkToolTip, InfoScreen_LinkToolTip_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SelectTableScreen_Title, SelectTableScreen_Title_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SelectTableScreen_Free, SelectTableScreen_Free_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SelectTableScreen_Occupied, SelectTableScreen_Occupied_ValueTxt, 'en-US');
@@ -181,6 +199,9 @@ codeunit 51002 BCS_TO_LabelManagement
         InsertLabel(TempPowerAppsLabels, SummaryScreen_Total, SummaryScreen_Total_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SummaryScreen_DeleteMessage, SummaryScreen_DeleteMessage_ValueTxt, 'en-US');
         InsertLabel(TempPowerAppsLabels, SummaryScreen_CheckOutMessage, SummaryScreen_CheckOutMessage_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, SummaryScreen_Gallery, SummaryScreen_Gallery_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, SummaryScreen_SummaryStateExpanded, SummaryScreen_SummaryStateExpanded_ValueTxt, 'en-US');
+        InsertLabel(TempPowerAppsLabels, SummaryScreen_SummaryStateCollapsed, SummaryScreen_SummaryStateCollapsed_ValueTxt, 'en-US');
 
     end;
 
