@@ -81,6 +81,16 @@
             LayoutMinWidth: =250
             ZIndex: =1
 
+            lblItemScreenTitle As label:
+                Align: =Align.Center
+                Font: =varTheme.font
+                Height: =70
+                Size: =26
+                Text: =varSelectedWarehouse.Name
+                Width: =Parent.Width
+                Y: =(Parent.Height - Self.Height)/2
+                ZIndex: =1
+
             imgCloseItemScreen As image:
                 AccessibleLabel: =Self.Tooltip
                 Image: ='dismiss icon'
@@ -92,18 +102,9 @@
                 PaddingRight: =20
                 PaddingTop: =20
                 TabIndex: =0
+                Tooltip: =varLabels.Close
                 X: =Parent.Width - Self.Width
-                ZIndex: =3
-
-            lblItemScreenTitle As label:
-                Align: =Align.Center
-                Font: =varTheme.font
-                Height: =70
-                Size: =26
-                Text: =varSelectedWarehouse.Name
-                Width: =Parent.Width
-                Y: =(Parent.Height - Self.Height)/2
-                ZIndex: =4
+                ZIndex: =2
 
         conItemImage As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -130,7 +131,6 @@
                         ,
                         varScannedItem.Picture  
                     )
-                ImagePosition: =ImagePosition.Fill
                 Width: =300
                 X: =Parent.Width/2 - Self.Width/2
                 Y: =1
@@ -253,11 +253,11 @@
                 OnSelect: |-
                     =If(ctxInventory < 99999, UpdateContext({ctxInventory: ctxInventory + 1})) 
                 PaddingBottom: =15
-                PaddingRight: =25
+                PaddingRight: =15
                 PaddingTop: =15
                 TabIndex: =0
                 Tooltip: =varLabels.ItemScreen_Add
-                Width: =80
+                Width: =90
                 X: =Parent.Width - Self.Width
                 ZIndex: =8
 
@@ -268,12 +268,12 @@
                 OnSelect: |-
                     =If(ctxInventory > 0, UpdateContext({ctxInventory: ctxInventory - 1}));
                 PaddingBottom: =15
-                PaddingLeft: =25
+                PaddingLeft: =15
                 PaddingTop: =15
                 TabIndex: =0
                 Tooltip: =If(ctxInventory > 0, varLabels.ItemScreen_SubStract, varLabels.ItemScreen_SubStractBlocked)
                 Transparency: =If(ctxInventory <= 0, 70%, 0)
-                Width: =80
+                Width: =90
                 ZIndex: =9
 
         btnSubChanges As button:
@@ -289,7 +289,7 @@
             OnSelect: |
                 =UpdateContext({ctxShowLoadingScreen: true, ctxShouldShowError: false});
                 
-                IfError(Patch('items (v2.0)', {id: varScannedItem.id}, {inventory: ctxInventory }),
+                IfError(Patch('itemsWithImage (microsoft/powerApps/beta)', {id: varScannedItem.id}, {inventory: ctxInventory, 'Location Filter': varSelectedWarehouse.Code }),
                     // Parse error message
                     UpdateContext({ctxShouldShowError: true, ctxErrorMessage: Match(FirstError.Message, ":.*").FullMatch});
                     Trace("Inventory update failed for " &varScannedItem.DisplayName, NotificationType.Error, FirstError);    
@@ -297,7 +297,7 @@
                 
                 If(ctxShouldShowError, 
                     Notify(Substitute(ctxErrorMessage, ":", ""), NotificationType.Error);   
-                    UpdateContext({ctxShowLoadingScreen: false, ctxErrorUpdatingItem: false});
+                    UpdateContext({ctxShowLoadingScreen: false, ctxShouldShowError: false });
                     ,
                     Navigate('Item updated screen', ScreenTransition.Fade);
                 );
