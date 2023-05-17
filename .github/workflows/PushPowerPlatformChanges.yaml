@@ -83,7 +83,7 @@ jobs:
           Add-Content -Path $env:GITHUB_ENV -Value "powerPlatformSolutionFolder=$solutionName"
 
       - name: Parse DeployToSettings and AuthContext
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadPowerPlatformSettings@PowerPlatform
+        uses: andersgMSFT/AL-Go-Actions/ReadPowerPlatformSettings@fixPPWorkFLows 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -103,7 +103,7 @@ jobs:
           companyId: ${{ env.companyId }}
 
       - name: Export and push changes to Power Platform
-        uses: BusinessCentralDemos/AL-Go-Actions/DeployPowerPlatform@PowerPlatform
+        uses: andersgMSFT/AL-Go-Actions/DeployPowerPlatform@fixPPWorkFLows 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}

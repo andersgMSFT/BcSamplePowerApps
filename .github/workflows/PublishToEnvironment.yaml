@@ -169,7 +169,7 @@ jobs:
 
       - name: Deploy PowerPlatform
         if: ${{ env.deployPP == 'true' }}
-        uses: BusinessCentralDemos/AL-Go-Actions/DeployPowerPlatform@PowerPlatform
+        uses: andersgMSFT/AL-Go-Actions/DeployPowerPlatform@fixPPWorkFLows 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
