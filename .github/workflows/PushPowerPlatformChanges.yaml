@@ -30,7 +30,7 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@tempFix 
         with:
           shell: powershell
           eventId: "DO0103"
@@ -45,12 +45,12 @@ jobs:
           Add-Content -Path $env:GITHUB_OUTPUT -Value "envName=$envName"
 
       - name: Read settings
-        uses: andersgMSFT/AL-Go-Actions/ReadSettings@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSettings@tempFix 
         with:
           shell: powershell
 
       - name: Read secrets
-        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@tempFix 
         env:
           secrets: ${{ toJson(secrets) }}
         with:
@@ -60,7 +60,7 @@ jobs:
 
       - name: read auth context
         id: authContext
-        uses: andersgMSFT/AL-Go-Actions/ReadAuthContext@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadAuthContext@tempFix 
         with:
           shell: powershell
           envName: ${{ steps.envName.outputs.envName }}
@@ -83,7 +83,7 @@ jobs:
           Add-Content -Path $env:GITHUB_ENV -Value "powerPlatformSolutionFolder=$solutionName"
 
       - name: Parse DeployToSettings and AuthContext
-        uses: andersgMSFT/AL-Go-Actions/ReadPowerPlatformSettings@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadPowerPlatformSettings@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -92,7 +92,7 @@ jobs:
 
       - name: Build PowerPlatform Solution
         id: BuildPowerPlatform
-        uses: andersgMSFT/AL-Go-Actions/BuildPowerPlatform@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/BuildPowerPlatform@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -103,7 +103,7 @@ jobs:
           companyId: ${{ env.companyId }}
 
       - name: Export and push changes to Power Platform
-        uses: andersgMSFT/AL-Go-Actions/DeployPowerPlatform@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/DeployPowerPlatform@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -113,7 +113,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@tempFix 
         with:
           shell: powershell
           eventId: "DO0103"

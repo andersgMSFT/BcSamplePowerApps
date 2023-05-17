@@ -34,14 +34,14 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@tempFix 
         with:
           shell: powershell
           eventId: "DO0100"
 
       - name: Read settings
         id: ReadSettings
-        uses: andersgMSFT/AL-Go-Actions/ReadSettings@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSettings@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -113,14 +113,14 @@ jobs:
           path: '${{ github.workspace }}\.dependencies'
 
       - name: Read settings
-        uses: andersgMSFT/AL-Go-Actions/ReadSettings@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSettings@tempFix 
         with:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
           project: ${{ matrix.project }}
 
       - name: Read secrets
-        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@tempFix 
         env:
           secrets: ${{ toJson(secrets) }}
         with:
@@ -130,7 +130,7 @@ jobs:
           secrets: 'licenseFileUrl,insiderSasToken,codeSignCertificateUrl,codeSignCertificatePassword,keyVaultCertificateUrl,keyVaultCertificatePassword,keyVaultClientId,gitHubPackagesContext'
 
       - name: Run pipeline
-        uses: andersgMSFT/AL-Go-Actions/RunPipeline@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/RunPipeline@tempFix 
         with:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -208,7 +208,7 @@ jobs:
       - name: Analyze Test Results
         id: analyzeTestResults
         if: success() || failure()
-        uses: andersgMSFT/AL-Go-Actions/AnalyzeTests@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/AnalyzeTests@tempFix 
         with:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -216,7 +216,7 @@ jobs:
 
       - name: Cleanup
         if: always()
-        uses: andersgMSFT/AL-Go-Actions/PipelineCleanup@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/PipelineCleanup@tempFix 
         with:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -232,7 +232,7 @@ jobs:
 
       - name: Finalize the workflow
         id: PostProcess
-        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@tempFix 
         with:
           shell: powershell
           eventId: "DO0100"

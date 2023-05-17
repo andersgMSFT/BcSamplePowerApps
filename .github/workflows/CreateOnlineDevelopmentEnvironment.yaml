@@ -36,19 +36,19 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@tempFix 
         with:
           shell: powershell
           eventId: "DO0093"
 
       - name: Read settings
-        uses: andersgMSFT/AL-Go-Actions/ReadSettings@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSettings@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
 
       - name: Read secrets
-        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@tempFix 
         env:
           secrets: ${{ toJson(secrets) }}
         with:
@@ -80,7 +80,7 @@ jobs:
           }
 
       - name: Create Development Environment
-        uses: andersgMSFT/AL-Go-Actions/CreateDevelopmentEnvironment@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/CreateDevelopmentEnvironment@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -91,7 +91,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@tempFix 
         with:
           shell: powershell
           eventId: "DO0093"

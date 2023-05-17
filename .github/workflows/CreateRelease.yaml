@@ -66,14 +66,14 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@tempFix 
         with:
           shell: powershell
           eventId: "DO0094"
 
       - name: Read settings
         id: ReadSettings
-        uses: andersgMSFT/AL-Go-Actions/ReadSettings@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSettings@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -81,12 +81,12 @@ jobs:
 
       - name: Determine Projects
         id: determineProjects
-        uses: andersgMSFT/AL-Go-Actions/DetermineProjectsToBuild@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/DetermineProjectsToBuild@tempFix 
         with:
           shell: powershell
 
       - name: Check for updates to AL-Go system files
-        uses: andersgMSFT/AL-Go-Actions/CheckForUpdates@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/CheckForUpdates@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -177,7 +177,7 @@ jobs:
 
       - name: Prepare release notes
         id: createreleasenotes
-        uses: andersgMSFT/AL-Go-Actions/CreateReleaseNotes@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/CreateReleaseNotes@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -219,13 +219,13 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Read settings
-        uses: andersgMSFT/AL-Go-Actions/ReadSettings@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSettings@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.CreateRelease.outputs.telemetryScopeJson }}
 
       - name: Read secrets
-        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@tempFix 
         env:
           secrets: ${{ toJson(secrets) }}
         with:
@@ -277,7 +277,7 @@ jobs:
           Add-Content -Path $env:GITHUB_OUTPUT -Value "nuGetContext=$nuGetContext"
 
       - name: Deliver to NuGet
-        uses: andersgMSFT/AL-Go-Actions/Deliver@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/Deliver@tempFix 
         if: ${{ steps.nuGetContext.outputs.nuGetContext }}
         env:
           deliveryContext: ${{ steps.nuGetContext.outputs.nuGetContext }}
@@ -302,7 +302,7 @@ jobs:
           Add-Content -Path $env:GITHUB_OUTPUT -Value "storageContext=$storageContext"
 
       - name: Deliver to Storage
-        uses: andersgMSFT/AL-Go-Actions/Deliver@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/Deliver@tempFix 
         if: ${{ steps.storageContext.outputs.storageContext }}
         env:
           deliveryContext: ${{ steps.storageContext.outputs.storageContext }}
@@ -340,7 +340,7 @@ jobs:
     needs: [ CreateRelease, UploadArtifacts ]
     steps:
       - name: Update Version Number
-        uses: andersgMSFT/AL-Go-Actions/IncrementVersionNumber@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/IncrementVersionNumber@tempFix 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.CreateRelease.outputs.telemetryScopeJson }}
@@ -357,7 +357,7 @@ jobs:
 
       - name: Finalize the workflow
         id: PostProcess
-        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@fixPPWorkFLows 
+        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@tempFix 
         with:
           shell: powershell
           eventId: "DO0094"
