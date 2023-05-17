@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       templateUrl:
-        description: Template Repository URL (current is https://github.com/BusinessCentralDemos/AL-Go-PTE@main)
+        description: Template Repository URL (current is https://github.com/andersgMSFT/AL-Go-PTE@fixPPWorkFLows )
         required: false
         default: ''
       directCommit:
@@ -32,20 +32,20 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize@main
+        uses: andersgMSFT/AL-Go-Actions/WorkflowInitialize@fixPPWorkFLows 
         with:
           shell: powershell
           eventId: "DO0098"
 
       - name: Read settings
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings@main
+        uses: andersgMSFT/AL-Go-Actions/ReadSettings@fixPPWorkFLows 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
           get: keyVaultName,ghTokenWorkflowSecretName,templateUrl
 
       - name: Read secrets
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSecrets@main
+        uses: andersgMSFT/AL-Go-Actions/ReadSecrets@fixPPWorkFLows 
         env:
           secrets: ${{ toJson(secrets) }}
         with:
@@ -82,7 +82,7 @@ jobs:
           Add-Content -Path $env:GITHUB_ENV -Value "DirectCommit=$directCommit"
 
       - name: Update AL-Go system files
-        uses: BusinessCentralDemos/AL-Go-Actions/CheckForUpdates@main
+        uses: andersgMSFT/AL-Go-Actions/CheckForUpdates@fixPPWorkFLows 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -93,7 +93,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess@main
+        uses: andersgMSFT/AL-Go-Actions/WorkflowPostProcess@fixPPWorkFLows 
         with:
           shell: powershell
           eventId: "DO0098"
