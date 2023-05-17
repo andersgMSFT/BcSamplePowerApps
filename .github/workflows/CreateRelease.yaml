@@ -66,14 +66,14 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize 
+        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize@main
         with:
           shell: powershell
           eventId: "DO0094"
 
       - name: Read settings
         id: ReadSettings
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings 
+        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings@main
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -81,12 +81,12 @@ jobs:
 
       - name: Determine Projects
         id: determineProjects
-        uses: BusinessCentralDemos/AL-Go-Actions/DetermineProjectsToBuild 
+        uses: BusinessCentralDemos/AL-Go-Actions/DetermineProjectsToBuild@main
         with:
           shell: powershell
 
       - name: Check for updates to AL-Go system files
-        uses: BusinessCentralDemos/AL-Go-Actions/CheckForUpdates 
+        uses: BusinessCentralDemos/AL-Go-Actions/CheckForUpdates@main
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -177,7 +177,7 @@ jobs:
 
       - name: Prepare release notes
         id: createreleasenotes
-        uses: BusinessCentralDemos/AL-Go-Actions/CreateReleaseNotes 
+        uses: BusinessCentralDemos/AL-Go-Actions/CreateReleaseNotes@main
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -219,13 +219,13 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Read settings
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings 
+        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings@main
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.CreateRelease.outputs.telemetryScopeJson }}
 
       - name: Read secrets
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSecrets 
+        uses: BusinessCentralDemos/AL-Go-Actions/ReadSecrets@main
         env:
           secrets: ${{ toJson(secrets) }}
         with:
@@ -277,7 +277,7 @@ jobs:
           Add-Content -Path $env:GITHUB_OUTPUT -Value "nuGetContext=$nuGetContext"
 
       - name: Deliver to NuGet
-        uses: BusinessCentralDemos/AL-Go-Actions/Deliver 
+        uses: BusinessCentralDemos/AL-Go-Actions/Deliver@main
         if: ${{ steps.nuGetContext.outputs.nuGetContext }}
         env:
           deliveryContext: ${{ steps.nuGetContext.outputs.nuGetContext }}
@@ -302,7 +302,7 @@ jobs:
           Add-Content -Path $env:GITHUB_OUTPUT -Value "storageContext=$storageContext"
 
       - name: Deliver to Storage
-        uses: BusinessCentralDemos/AL-Go-Actions/Deliver 
+        uses: BusinessCentralDemos/AL-Go-Actions/Deliver@main
         if: ${{ steps.storageContext.outputs.storageContext }}
         env:
           deliveryContext: ${{ steps.storageContext.outputs.storageContext }}
@@ -340,7 +340,7 @@ jobs:
     needs: [ CreateRelease, UploadArtifacts ]
     steps:
       - name: Update Version Number
-        uses: BusinessCentralDemos/AL-Go-Actions/IncrementVersionNumber 
+        uses: BusinessCentralDemos/AL-Go-Actions/IncrementVersionNumber@main
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ needs.CreateRelease.outputs.telemetryScopeJson }}
@@ -357,7 +357,7 @@ jobs:
 
       - name: Finalize the workflow
         id: PostProcess
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess 
+        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess@main
         with:
           shell: powershell
           eventId: "DO0094"

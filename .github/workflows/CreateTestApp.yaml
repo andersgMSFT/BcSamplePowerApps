@@ -48,13 +48,13 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize 
+        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize@main
         with:
           shell: powershell
           eventId: "DO0095"
 
       - name: Creating a new test app
-        uses: BusinessCentralDemos/AL-Go-Actions/CreateApp 
+        uses: BusinessCentralDemos/AL-Go-Actions/CreateApp@main
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -68,7 +68,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess 
+        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess@main
         with:
           shell: powershell
           eventId: "DO0095"
