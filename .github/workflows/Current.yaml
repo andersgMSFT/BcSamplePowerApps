@@ -34,14 +34,14 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize 
         with:
           shell: powershell
           eventId: "DO0101"
 
       - name: Read settings
         id: ReadSettings
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -113,14 +113,14 @@ jobs:
           path: '${{ github.workspace }}\.dependencies'
 
       - name: Read settings
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings 
         with:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
           project: ${{ matrix.project }}
 
       - name: Read secrets
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSecrets@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/ReadSecrets 
         env:
           secrets: ${{ toJson(secrets) }}
         with:
@@ -130,7 +130,7 @@ jobs:
           secrets: 'licenseFileUrl,insiderSasToken,codeSignCertificateUrl,codeSignCertificatePassword,keyVaultCertificateUrl,keyVaultCertificatePassword,keyVaultClientId,gitHubPackagesContext'
 
       - name: Run pipeline
-        uses: BusinessCentralDemos/AL-Go-Actions/RunPipeline@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/RunPipeline 
         with:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -208,7 +208,7 @@ jobs:
       - name: Analyze Test Results
         id: analyzeTestResults
         if: success() || failure()
-        uses: BusinessCentralDemos/AL-Go-Actions/AnalyzeTests@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/AnalyzeTests 
         with:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -216,7 +216,7 @@ jobs:
 
       - name: Cleanup
         if: always()
-        uses: BusinessCentralDemos/AL-Go-Actions/PipelineCleanup@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/PipelineCleanup 
         with:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
@@ -232,7 +232,7 @@ jobs:
 
       - name: Finalize the workflow
         id: PostProcess
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess 
         with:
           shell: powershell
           eventId: "DO0101"

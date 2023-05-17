@@ -36,19 +36,19 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowInitialize 
         with:
           shell: powershell
           eventId: "DO0093"
 
       - name: Read settings
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/ReadSettings 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
 
       - name: Read secrets
-        uses: BusinessCentralDemos/AL-Go-Actions/ReadSecrets@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/ReadSecrets 
         env:
           secrets: ${{ toJson(secrets) }}
         with:
@@ -80,7 +80,7 @@ jobs:
           }
 
       - name: Create Development Environment
-        uses: BusinessCentralDemos/AL-Go-Actions/CreateDevelopmentEnvironment@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/CreateDevelopmentEnvironment 
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -91,7 +91,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess@PowerPlatform
+        uses: BusinessCentralDemos/AL-Go-Actions/WorkflowPostProcess 
         with:
           shell: powershell
           eventId: "DO0093"
