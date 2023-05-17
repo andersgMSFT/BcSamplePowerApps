@@ -1,6 +1,6 @@
 {
   "type": "PTE",
-  "templateUrl": "https://github.com/businesscentraldemos/AL-Go-PTE ",
+  "templateUrl": "https://github.com/businesscentraldemos/AL-Go-PTE",
   "powerPlatformSolutionFolder": "BcSampleAppsSolution",
   "environments": [
     "andersg (Production)",
